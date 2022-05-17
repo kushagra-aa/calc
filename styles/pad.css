@@ -1,0 +1,160 @@
+.pad {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-rows: 0fr;
+  grid-template-columns: 0fr 0fr 0fr 0fr 0fr;
+  grid-template-rows: 0fr 0fr 0fr 0fr 0fr 0fr;
+  gap: var(--gap);
+  grid-template-areas:
+    "history brackets percent divide mode"
+    "seven eight nine multiply mode"
+    "four five six minus back"
+    "one two three plus back"
+    "negative zero dot equal equal"
+    "C C C equal equal";
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  user-select: none;
+}
+.button {
+  color: #979797;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  width: var(--button-size);
+  height: var(--button-size);
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  cursor: pointer;
+  overflow: hidden;
+}
+.button img {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  transition: all 0.3s ease-in-out;
+}
+.button:hover img {
+  transform: scale(1.2);
+}
+#history {
+  grid-area: history;
+}
+#history img {
+  width: calc(var(--icon-size) * 1.5);
+  height: calc(var(--icon-size) * 1.5);
+}
+#brackets {
+  grid-area: brackets;
+}
+#brackets img {
+  width: calc(var(--icon-size) * 1.2);
+  height: calc(var(--icon-size) * 1.2);
+}
+#percent {
+  grid-area: percent;
+}
+#percent img {
+  width: calc(var(--icon-size) * 1.1);
+  height: calc(var(--icon-size) * 1.1);
+}
+#divide {
+  grid-area: divide;
+}
+#mode {
+  grid-area: mode;
+  height: calc((var(--button-size) * 2) + var(--gap));
+}
+#mode img {
+  height: calc(var(--icon-size) * 4);
+  width: calc(var(--icon-size) * 4);
+}
+#seven {
+  grid-area: seven;
+}
+#eight {
+  grid-area: eight;
+}
+#nine {
+  grid-area: nine;
+}
+#multiply {
+  grid-area: multiply;
+}
+#four {
+  grid-area: four;
+}
+#five {
+  grid-area: five;
+}
+#six {
+  grid-area: six;
+}
+#minus {
+  grid-area: minus;
+}
+#backspace {
+  grid-area: back;
+  height: calc((var(--button-size) * 2) + var(--gap));
+}
+#backspace img {
+  height: calc(var(--icon-size) * 2);
+  width: calc(var(--icon-size) * 2);
+}
+#one {
+  grid-area: one;
+}
+#two {
+  grid-area: two;
+}
+#three {
+  grid-area: three;
+}
+#plus {
+  grid-area: plus;
+}
+#negative {
+  grid-area: negative;
+}
+#negative img {
+  width: calc(var(--icon-size) * 1.5);
+  height: calc(var(--icon-size) * 1.5);
+}
+#zero {
+  grid-area: zero;
+}
+#dot {
+  grid-area: dot;
+}
+#dot img {
+  width: calc(var(--icon-size) * 0.5);
+  height: calc(var(--icon-size) * 0.5);
+}
+#equal {
+  background: var(--dark);
+  grid-area: equal;
+  height: calc((var(--button-size) * 2) + var(--gap));
+  width: -moz-calc((var(--button-size) * 2) + var(--gap));
+  width: -webkit-calc((var(--button-size) * 2) + var(--gap));
+  width: calc((var(--button-size) * 2) + var(--gap));
+}
+#equal img {
+  width: calc(var(--icon-size) * 3);
+  height: calc(var(--icon-size) * 3);
+}
+.dark #equal {
+  background: var(--light);
+}
+#clear {
+  grid-area: C;
+  width: -moz-calc((var(--button-size) * 3) + (var(--gap) * 2));
+  width: -webkit-calc((var(--button-size) * 3) + (var(--gap) * 2));
+  width: calc((var(--button-size) * 3) + (var(--gap) * 2));
+}
+#clear img {
+  width: calc(var(--icon-size) * 1.5);
+  height: calc(var(--icon-size) * 1.5);
+}

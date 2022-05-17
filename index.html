@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calc</title>
+</head>
+
+<body>
+  <div id="app" class="app">
+    <div class="button " id="settings">
+      <span id="setting-icon">
+        <img src="./assets/icons/setting.svg" alt="">
+      </span>
+      <span class="setting-color" id="color-1"></span>
+      <span class="setting-color" id="color-2"></span>
+      <span class="setting-color" id="color-3"></span>
+      <span class="setting-color" id="color-4"></span>
+      <span class="setting-color" id="color-5"></span>
+      <span class="setting-color" id="color-6"></span>
+    </div>
+    <div class="calc">
+      <div id="screen">
+        <div class="upper" id="ques">44654650</div>
+        <div class="" id="ans">045446543267</div>
+      </div>
+      <div class="pad">
+        <!-- history -->
+        <div id="history" class="button pad-button"><img src="./assets/icons/histroy.svg" alt=""></div>
+        <!-- brackets -->
+        <div id="brackets" class="button pad-button pad-function" data-value="brackets"><img
+            src="./assets/icons/brackets.svg" alt=""></div>
+        <!-- percent -->
+        <div id="percent" class="button pad-button pad-function" data-value="percent"><img
+            src="./assets/icons/percent.svg" alt=""></div>
+        <!-- divide -->
+        <div id="divide" class="button pad-button pad-operation" data-value="/"><img src="./assets/icons/divide.svg"
+            alt=""></div>
+        <!-- mode -->
+        <div id="mode" class="button pad-button"><img src="./assets/icons/mode.svg" alt=""></div>
+        <!-- 7 -->
+        <div id="seven" class="button pad-button num" data-value="7"><img src="./assets/icons/7.svg" alt=""></div>
+        <!-- 8 -->
+        <div id="eight" class="button pad-button num" data-value="8"><img src="./assets/icons/8.svg" alt=""></div>
+        <!-- 9 -->
+        <div id="nine" class="button pad-button num" data-value="9"><img src="./assets/icons/9.svg" alt=""></div>
+        <!-- multiply -->
+        <div id="multiply" class="button pad-button pad-operation" data-value="*"><img src="./assets/icons/multiply.svg"
+            alt=""></div>
+        <!-- 4 -->
+        <div id="four" class="button pad-button num" data-value="4"><img src="./assets/icons/4.svg" alt=""></div>
+        <!-- 5 -->
+        <div id="five" class="button pad-button num" data-value="5"><img src="./assets/icons/5.svg" alt=""></div>
+        <!-- 6 -->
+        <div id="six" class="button pad-button num" data-value="6"><img src="./assets/icons/6.svg" alt=""></div>
+        <!-- minus -->
+        <div id="minus" class="button pad-button pad-operation" data-value="-"><img src="./assets/icons/-.svg" alt="">
+        </div>
+        <!-- backspace -->
+        <div id="backspace" class="button pad-button"><img src="./assets/icons/backspace.svg" alt=""></div>
+        <!-- 1 -->
+        <div id="one" class="button pad-button num" data-value="1"><img src="./assets/icons/1.svg" alt=""></div>
+        <!-- 2 -->
+        <div id="two" class="button pad-button num" data-value="2"><img src="./assets/icons/2.svg" alt=""></div>
+        <!-- 3 -->
+        <div id="three" class="button pad-button num" data-value="3"><img src="./assets/icons/3.svg" alt=""></div>
+        <!-- plus -->
+        <div id="plus" class="button pad-button pad-operation" data-value="+"><img src="./assets/icons/plus.svg" alt="">
+        </div>
+        <!-- +/- -->
+        <div id="negative" class="button pad-button pad-function" data-value="+-"><img src="./assets/icons/negative.svg"
+            alt=""></div>
+        <!-- 0 -->
+        <div id="zero" class="button pad-button num" data-value="0"><img src="./assets/icons/0.svg" alt=""></div>
+        <!-- . -->
+        <div id="dot" class="button pad-button pad-function" data-value="."><img src="./assets/icons/dot.svg" alt="">
+        </div>
+        <!-- equal -->
+        <div id="equal" class="button pad-button pad-function" data-value="="><img src="./assets/icons/=.svg" alt="">
+        </div>
+        <!-- clear -->
+        <div id="clear" class="button pad-button"><img src="./assets/icons/C.svg" alt=""></div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="./scripts/main.js"></script>
+</body>
+
+</html>
