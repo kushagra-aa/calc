@@ -13,6 +13,8 @@ const padOperations = document.querySelectorAll(".pad-operation");
 const padFunctions = document.querySelectorAll(".pad-function");
 const padNums = document.querySelectorAll(".num");
 const modeBtn = document.getElementById("mode");
+const clearButton = document.getElementById("clear");
+const backButton = document.getElementById("backspace");
 
 // screen Elements
 const quesElm = document.getElementById("ques");
@@ -32,6 +34,99 @@ const pinkDark = "#4C243B";
 const orangeLight = "#FA6E58";
 const orangeDark = "#4C2924";
 
+// CLASSES
+// Caclculator
+class Calculator {
+  constructor(quesElm, ansElm) {
+    this.quesElm = quesElm;
+    this.ansElm = ansElm;
+    this.clear();
+  }
+
+  clear() {
+    this.currentOperand = "";
+    this.previousOperand = "";
+    this.operation = undefined;
+  }
+
+  delete() {
+    this.currentOperand = this.currentOperand.toString().slice(0, -1);
+  }
+
+  appendNumber(number) {
+    if (number === "." && this.currentOperand.includes(".")) return;
+    this.currentOperand = this.currentOperand.toString() + number.toString();
+  }
+
+  chooseOperation(operation) {
+    if (this.currentOperand === "") return;
+    if (this.previousOperand !== "") {
+      this.compute();
+    }
+    this.operation = operation;
+    this.previousOperand = this.currentOperand;
+    this.currentOperand = "";
+  }
+
+  compute() {
+    let computation;
+    const prev = parseFloat(this.previousOperand);
+    const current = parseFloat(this.currentOperand);
+    if (isNaN(prev) || isNaN(current)) return;
+    switch (this.operation) {
+      case "+":
+        computation = prev + current;
+        break;
+      case "-":
+        computation = prev - current;
+        break;
+      case "*":
+        computation = prev * current;
+        break;
+      case "÷":
+        computation = prev / current;
+        break;
+      default:
+        return;
+    }
+    this.currentOperand = computation;
+    this.operation = undefined;
+    this.previousOperand = "";
+  }
+
+  getDisplayNumber(number) {
+    const stringNumber = number.toString();
+    const integerDigits = parseFloat(stringNumber.split(".")[0]);
+    const decimalDigits = stringNumber.split(".")[1];
+    let integerDisplay;
+    if (isNaN(integerDigits)) {
+      integerDisplay = "";
+    } else {
+      integerDisplay = integerDigits.toLocaleString("en", {
+        maximumFractionDigits: 0,
+      });
+    }
+    if (decimalDigits != null) {
+      return `${integerDisplay}.${decimalDigits}`;
+    } else {
+      return integerDisplay;
+    }
+  }
+
+  updateDisplay() {
+    this.ansElm.innerText = this.getDisplayNumber(this.currentOperand);
+    if (this.operation != null) {
+      this.quesElm.innerText = `${this.getDisplayNumber(
+        this.previousOperand
+      )} ${this.operation}`;
+    } else {
+      this.quesElm.innerText = "";
+    }
+  }
+}
+// CLASS INITIALIZATION
+const calculator = new Calculator(quesElm, ansElm);
+
 // FUNCTIONS
 const setup = () => {
   settingsBtn.addEventListener("click", toggleSettings);
@@ -39,9 +134,36 @@ const setup = () => {
   colorBtns.forEach((btn, i) =>
     btn.addEventListener("click", () => changeColor(i))
   );
-  console.log("padNums :>> ", padNums);
-  console.log("padFunctions :>> ", padFunctions);
-  console.log("padOperations :>> ", padOperations);
+  padNums.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      calculator.appendNumber(btn.dataset.value);
+      calculator.updateDisplay();
+    })
+  );
+  padOperations.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      calculator.chooseOperation(btn.dataset.value);
+      calculator.updateDisplay();
+    });
+  });
+  padFunctions.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (btn.dataset.value === "=") {
+        calculator.compute();
+        quesElm.classList.remove("upper");
+        ansElm.classList.add("upper");
+      } else if (btn.dataset.value === ".") calculator.appendNumber(".");
+      calculator.updateDisplay();
+    });
+  });
+  clearButton.addEventListener("click", () => {
+    calculator.clear();
+    calculator.updateDisplay();
+  });
+  backButton.addEventListener("click", () => {
+    calculator.delete();
+    calculator.updateDisplay();
+  });
 };
 
 const toggleSettings = () => {
